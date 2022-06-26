@@ -11,35 +11,27 @@ public class SessionMonitor implements SessionMonitorMBean {
 
     public static void setSessionManager(Manager manager) {
         sessionManager = manager;
-        System.out.println("SessionManager have been set.");
     }
 
     @Override
     public long getMemoryConsumption() {
         if (sessionManager != null) {
-            Session [] sessions = sessionManager.findSessions();
-            return SizeOf.deepSizeOf(sessions);
-            // System.out.println("Session size: " + SizeOf.deepSizeOf(sessions));
-
-            /*
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos;
             try {
-                oos = new ObjectOutputStream(baos);
-                oos.writeObject(sessions);
-                oos.flush();
-                oos.close();
-                return baos.toByteArray().length;
-            } catch (IOException e) {
+                Session [] sessions = sessionManager.findSessions();
+                return SizeOf.deepSizeOf(sessions);
+            } catch(RuntimeException e) {
+                // Falied to get size of HttpSession object
                 e.printStackTrace();
+                return -2;
             }
-            return -2;
-            */
-
-            // return sessions.length;
         } else {
-            System.out.println("SessionManager is not ready.");
+            // SessionManager is not ready
             return -1;
         }
+    }
+
+    @Override
+    public long getNumberOfActiveHttpSession() {
+        return sessionManager.findSessions().length;
     }
 }

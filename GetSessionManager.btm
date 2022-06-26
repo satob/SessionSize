@@ -1,6 +1,6 @@
 RULE Set ManagerBase object to MBean
 CLASS ^org.apache.catalina.session.ManagerBase
-METHOD add
+METHOD initInternal
 AT EXIT
 IF TRUE
 DO
