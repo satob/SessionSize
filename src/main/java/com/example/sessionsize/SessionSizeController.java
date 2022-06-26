@@ -21,13 +21,6 @@ public class SessionSizeController {
             sb.append(uuid);
         }
         session.setAttribute(UUID.randomUUID().toString(), sb.toString());
-
-//        Map<String, String> parameters = new HashMap<>();
-//        parameters.put("Pbkdf2PasswordHash.Iterations", "3072");
-//        parameters.put("Pbkdf2PasswordHash.Algorithm", "PBKDF2WithHmacSHA512");
-//        parameters.put("Pbkdf2PasswordHash.SaltSizeBytes", "64");
-//        passwordHash.initialize(parameters);
-
         return UUID.randomUUID().toString();
     }
 }

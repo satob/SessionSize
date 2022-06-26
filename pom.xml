@@ -42,12 +42,22 @@
 			<artifactId>sizeof</artifactId>
 			<version>0.2.2</version>
 			<scope>system</scope>
-			<systemPath>C:/home/satob/workspace/SessionSize/lib/SizeOf.jar</systemPath>
-</dependency>
+			<systemPath>${project.basedir}/lib/SizeOf.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/com/example/sessionsizeagent/*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
