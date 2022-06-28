@@ -4,6 +4,6 @@ METHOD initInternal
 AT EXIT
 IF TRUE
 DO
-    traceln("initInternal(): Setting SessionManager");
-    com.example.sessionsizeagent.SessionMonitor.setSessionManager($this);
+    traceln("SETTING SessionManager");
+    com.example.sessionsize.SessionMonitor.setSessionManager($this);
 ENDRULE
